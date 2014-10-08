@@ -3,7 +3,10 @@
 USER=`id -u -n`
 HOST=`hostname`
 DIR="/temp/mongodb-$USER-$HOST"
-LOGDIR="$HOME/mongodb-logs/"
+LOGDIR="$HOME/mongodb-logs"
+
+#Kill if process is already running
+ps axf | grep mongod | grep -v grep | awk '{print "kill -9 " $1}'
 
 #Delete the directory if it is existing
 rm -rf $DIR
