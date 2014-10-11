@@ -8,3 +8,6 @@ ssh access1 "bash -s" < ./stop-mongo-processes.sh
 
 echo "Stoping mongo in access2"
 ssh access2 "bash -s" < ./stop-mongo-processes.sh
+
+echo "Stoping mongo in access3"
+ssh access3 "bash -s" < ./stop-mongo-processes.sh
