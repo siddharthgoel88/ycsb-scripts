@@ -1,4 +1,4 @@
-#!iiin/bash
+#!/bin/bash
 
 HOST=`hostname`
 LOGDIR="$HOME/mongodb-logs"
@@ -37,7 +37,7 @@ echo "Enabling Sharding"
 mongo --port $3 --eval "sh.enableSharding('test')"
 
 echo "Add index over which sharding has to happen"
-mongo --port $3 --eval "db.usertable.ensureIndex({ id: 'hashed'})"
+mongo --port $3 --eval "db.usertable.ensureIndex({ _id: 'hashed'})"
 
 echo "Sharding collection"
 mongo --port $3 --eval "sh.shardCollection('test.usertable', {'_id':'hashed'})"
