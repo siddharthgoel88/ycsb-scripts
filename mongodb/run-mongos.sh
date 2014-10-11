@@ -1,7 +1,7 @@
-#!iiin/bash
+#!bin/bash
 
 HOST=`hostname`
-LOGDIR="$HOME/mongodb-logs"
+LOGDIR="$HOME/mongodb-logs/access-logs"
 
 #Delete the directory if it is existing
 rm -rf $DIR
@@ -14,18 +14,18 @@ export PATH=$PATH:$1:
 #$2 is the port on which we want to run mongod are running while on
 #$3 mongos will run nohup will run the mongod in background and 
 #store logs in $LOGDIR
-nohup mongos --configdb compg4:$2,compg6:$2,compg7:$2 --port $3 > "$LOGDIR/mongos-$HOST.log" &
+nohup mongos --configdb access0:$2,access1:$2,access2:$2 --port $3 > "$LOGDIR/mongos-$HOST.log" &
 
 sleep 5
 
-echo "Adding compg4 to shards"
-mongo --port $3 --eval "sh.addShard('compg4:$2')"
+echo "Adding access0 to shards"
+mongo --port $3 --eval "sh.addShard('access0:$2')"
 
-echo "Adding compg6 to shards"
-mongo --port $3 --eval "sh.addShard('compg6:$2')"
+echo "Adding access1 to shards"
+mongo --port $3 --eval "sh.addShard('access1:$2')"
 
-echo "Adding compg7 to shards"
-mongo --port $3 --eval "sh.addShard('compg7:$2')"
+echo "Adding access2 to shards"
+mongo --port $3 --eval "sh.addShard('access2:$2')"
 
 echo "Creating database: test"
 mongo --port $3 --eval "use test"

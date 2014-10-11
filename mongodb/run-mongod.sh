@@ -2,8 +2,8 @@
 
 USER=`id -u -n`
 HOST=`hostname`
-DIR="/temp/mongodb-$USER-$HOST"
-LOGDIR="$HOME/mongodb-logs"
+DIR="/tmp/mongodb-$USER-$HOST"
+LOGDIR="$HOME/mongodb-logs/access-logs"
 
 #Delete the directory if it is existing
 rm -rf $DIR
