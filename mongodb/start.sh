@@ -18,4 +18,4 @@ echo "Starting mongos on compg4 on port $MONGOS_PORT !!"
 ssh compg4 "bash -s" < ./run-mongos.sh $MONGOBIN $MONGOD_PORT $MONGOS_PORT
 
 echo "Starting YCSB on compg5"
-ssh compg5 "bash -s" < ./run-ycsb.sh $YCSBBIN
+ssh compg5 "bash -s" < ./run-ycsb.sh $YCSBBIN $MONGOS_PORT
