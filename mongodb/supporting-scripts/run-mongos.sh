@@ -14,9 +14,11 @@ export PATH=$PATH:$1:
 #$2 is the port on which we want to run mongod are running while on
 #$3 mongos will run nohup will run the mongod in background and 
 #store logs in $LOGDIR
-nohup mongos --configdb compg4:$2,compg6:$2,compg7:$2 --port $3 > "$LOGDIR/mongos-$HOST.log" &
+#mongos --configdb compg4:2010,compg6:2010,compg7:2010 --port 2014
+nohup mongos --config mongodb.conf --configdb compg4:$2,compg6:$2,compg7:$2 --port $3 > "$LOGDIR/mongos-$HOST.log" &
+#mongos --configdb 192.168.8.215:$2,192.168.8.210:$2,192.168.8.206:$2 --port $3 #> "$LOGDIR/mongos-$HOST.log"
 
-sleep 5
+sleep 10
 
 echo "Adding compg4 to shards"
 mongo --port $3 --eval "sh.addShard('compg4:$2')"

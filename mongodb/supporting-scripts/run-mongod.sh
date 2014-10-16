@@ -15,6 +15,9 @@ mkdir -p $LOGDIR
 
 export PATH=$PATH:$1:
 
+
 #$2 is the port on which we want to run mongod
 #nohup will run the mongod in background and store logs in $LOGDIR
-nohup mongod --dbpath $DIR --port $2 > "$LOGDIR/mongod-$HOST.log" &
+nohup mongod --config mongodb.conf --dbpath $DIR --port $2 > "$LOGDIR/mongod-$HOST.log" &
+#mongod --dbpath $DIR --repair > /dev/null
+
