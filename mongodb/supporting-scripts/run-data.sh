@@ -19,6 +19,7 @@ echo "Changing to $2"
 cd $2
 
 echo "Running workload"
-bash ./generated-script-for-run-data.sh
+nohup bash ./generated-script-for-run-data.sh &
 
-
+echo "End"
+exit
