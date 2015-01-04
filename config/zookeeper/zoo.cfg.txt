@@ -1,0 +1,6 @@
+tickTime=2000
+dataDir=/temp/nvenkat/zookeeper_data
+clientPort=2181
+initLimit=5
+syncLimit=2
+server.1=compg6:2888:3888
